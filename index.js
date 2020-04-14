@@ -1,8 +1,9 @@
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 const express = require("express");
 const app = express();
 const crypto = require("crypto");
-const cookie = require("cookie");
+const cookie = require("cookie")
+// const cookie = require("cookie");
 const nonce = require("nonce");
 const queryString = require('request-promise');
 const request = require("request");
@@ -10,10 +11,11 @@ const request = require("request");
 const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
 const scopes = 'read_products';
-const forwardingAddress = "https://f0403c54.ngrok.io";
+const forwardingAddress = "http://4ec9c252.ngrok.io";
 
 
 app.get("/", (req,res)=> {
+ 
   res.send("Hello World");
 });
 
@@ -29,5 +31,6 @@ app.get("/shopify",(req,res)=> {
   return res.status(400).send('Missing shop parameter. Please add ?shop=your-development-shop.myshopify.com to your request');
 })
 app.listen(3000, () => {
+  console.log(apiKey);
   console.log('App listening on port 3000!');
 });
